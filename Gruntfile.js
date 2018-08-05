@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       },
       pages: {
         options: {
-          remote: 'git@github.com:meaganmvs/meganmvs.github.io.git',
+          remote: 'git@github.com:meaganmvs/meaganmvs.github.io.git',
           branch: 'gh-pages'
         }
       },
