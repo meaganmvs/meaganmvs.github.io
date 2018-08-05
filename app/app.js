@@ -1,7 +1,5 @@
-'use strict';
-
 /**
- * GIPY Search App
+ * Personal Website
  * Created By Meagan Sievers
  */
 angular

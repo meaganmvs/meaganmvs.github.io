@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('meaganApp')
   .controller('SearchCtrl', function ($scope, $http, $sce, $timeout, $mdSidenav) {
     $scope.search = {};
@@ -17,16 +15,8 @@ angular.module('meaganApp')
         });
     };
     
-    $scope.toggleNav = buildToggler('right');
-    
-    function buildToggler(componentId) {
-        return function () {
-            $mdSidenav(componentId).toggle();
-        }
-    }
-    
-    $scope.msg = {};
-    $scope.sendEmail = function () {
+    $scope.toggleNav = function () {
+        return $mdSidenav('right').toggle();
     };
 
   });

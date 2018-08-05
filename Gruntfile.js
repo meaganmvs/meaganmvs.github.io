@@ -6,7 +6,7 @@ module.exports = function(grunt) {
             separator: ';'
         },
         dist: {
-            src: ['src/**/*.js'],
+            src: ['app/**/*.js'],
             dest: 'dist/<%= pkg.name %>.js'
           }
       },
@@ -19,6 +19,18 @@ module.exports = function(grunt) {
               'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
             }
           }  
+      },
+      remove_usestrict: {
+          dist: {
+              files: [
+                  {
+                    expand: true,
+                    cwd: 'public/app/js/',
+                    dest: 'build/app/js/',
+                    src: ['**/*.js']
+              }
+              ]
+          }
       },
       buildcontrol: {
       options: {
@@ -43,11 +55,12 @@ module.exports = function(grunt) {
 
   });
 
-    
+grunt.loadNpmTasks('grunt-remove-usestrict');
 grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-build-control');
-grunt.registerTask('default', ['concat', 'uglify', 'buildcontrol']);
+grunt.registerTask('default', ['remove_usestrict', 'concat', 'uglify']);
+grunt.registerTask('build', ['remove_usestrict', 'concat', 'uglify', 'buildcontrol']);
 
 
 };
