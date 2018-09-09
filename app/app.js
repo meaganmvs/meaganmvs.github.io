@@ -14,16 +14,16 @@ angular
     
     $routeProvider
       .when('/', {
-        templateUrl: 'views/meagan.html'
+        templateUrl: 'templates/meagan.html'
       })
      .when('/gifs', {
-        templateUrl: 'views/search.html'
+        templateUrl: 'templates/search.html'
     })
     .when('/contact', {
-        templateUrl: 'views/contact.html'
+        templateUrl: 'templates/contact.html'
     })
     .when('/photos', {
-        templateUrl: 'views/photos.html'
+        templateUrl: 'templates/photos.html'
     })
       .otherwise({
         redirectTo: '/'
@@ -33,7 +33,7 @@ angular
 .directive('meagan', function () {
         return {
             restrict: 'E',
-            templateUrl: 'views/meagan.html'
+            templateUrl: 'templates/meagan.html'
         }
     });
 

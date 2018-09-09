@@ -7,19 +7,18 @@
   <title>Meagan Sievers</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.10/angular-material.min.css">
+  <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 </head>
 <body>
   <md-sidenav class="md-sidenav-right nav" md-component-id="right" md-disable-backdrop>
     <md-content>
-        <a ng-click="toggleNav()" style="margin-left:auto"><i class="fa fa-times hamburger"></i></a>
+        <a ng-click="toggleNav()" style="margin-left:auto"><i class="fa fa-times hamburger close"></i></a>
         <md-button href="/" ng-click="toggleNav()">HOME</md-button>
         <md-button href="gifs" ng-click="toggleNav()" >GIFS</md-button>
         <md-button href="photos" ng-click="toggleNav()" >PHOTOS</md-button>
-        <md-button href="contact" ng-click="toggleNav()" >CONTACT</md-button>
     </md-content>
 </md-sidenav>
     <md-content layout = "column" flex>
@@ -29,12 +28,32 @@
         <div ng-view></div>
   </md-content>
 
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-aria/angular-aria.js"></script>
-<script src="bower_components/angular-messages/angular-messages.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCQ7zm0a6VEIc9agD6FkktqkVkwcFxu8fA",
+    authDomain: "meagan-personal-website.firebaseapp.com",
+    databaseURL: "https://meagan-personal-website.firebaseio.com",
+    projectId: "meagan-personal-website",
+    storageBucket: "meagan-personal-website.appspot.com",
+    messagingSenderId: "1078419807295"
+  };
+  firebase.initializeApp(config);
+</script>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-loader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-mocks.js"></script>
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script> 
+    
 <script src="app.js"></script>
 <script src="controllers/search.js"></script>
 </body>

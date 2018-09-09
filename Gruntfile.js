@@ -1,66 +1,29 @@
 module.exports = function(grunt) {
-  grunt.initConfig({
-      pkg: grunt.file.readJSON('package.json'),
-      concat: {
-          options: {
-            separator: ';'
-        },
-        dist: {
-            src: ['app/**/*.js'],
-            dest: 'dist/<%= pkg.name %>.js'
-          }
+    
+    grunt.initConfig({
+    browserify: {
+      js: {
+        // A single entry point for our app
+        src: ['app/app.js', 'app/controllers/*.js'],
+        // Compile to a single file to add a script tag for in your HTML
+        dest: 'dist/app.js',
       },
-      uglify: {
-        options: {
-            banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-          },
-          dist: {
-            files: {
-              'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
-            }
-          }  
-      },
-      remove_usestrict: {
-          dist: {
-              files: [
-                  {
-                    expand: true,
-                    cwd: 'public/app/js/',
-                    dest: 'build/app/js/',
-                    src: ['**/*.js']
-              }
-              ]
-          }
-      },
-      buildcontrol: {
-      options: {
-        dir: 'dist',
-        commit: true,
-        push: true,
-        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
-      },
-      pages: {
-        options: {
-          remote: 'git@github.com:meaganmvs/meaganmvs.github.io.git',
-          branch: 'gh-pages'
-        }
-      },
-      local: {
-        options: {
-          remote: '../',
-          branch: 'build'
-        }
-      }
     },
-
+    copy: {
+      all: {
+        // This copies all the html and css into the dist/ folder
+        expand: true,
+        cwd: 'app/',
+        src: ['**/*.html', 'styles/*.css', '!**/bower_components/**'],
+        dest: 'dist/',
+      },
+    }
   });
 
-grunt.loadNpmTasks('grunt-remove-usestrict');
-grunt.loadNpmTasks('grunt-contrib-concat');
-grunt.loadNpmTasks('grunt-contrib-uglify');
-grunt.loadNpmTasks('grunt-build-control');
-grunt.registerTask('default', ['remove_usestrict', 'concat', 'uglify']);
-grunt.registerTask('build', ['remove_usestrict', 'concat', 'uglify', 'buildcontrol']);
+  // Load the npm installed tasks
+  grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-
+  // The default tasks to run when you type: grunt
+  grunt.registerTask('default', ['browserify', 'copy']);
 };
