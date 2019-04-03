@@ -13,17 +13,20 @@
 <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 </head>
 <body>
-  <md-sidenav class="md-sidenav-right nav" md-component-id="right" md-disable-backdrop>
+ <!-- <md-sidenav class="md-sidenav-right nav" md-component-id="right" md-disable-backdrop>
     <md-content>
         <a ng-click="toggleNav()" style="margin-left:auto"><i class="fa fa-times hamburger close"></i></a>
         <md-button href="/" ng-click="toggleNav()">HOME</md-button>
         <md-button href="gifs" ng-click="toggleNav()" >GIFS</md-button>
         <md-button href="photos" ng-click="toggleNav()" >PHOTOS</md-button>
     </md-content>
-</md-sidenav>
+</md-sidenav> -->
     <md-content layout = "column" flex>
         <div layout="row" class="header" layout-padding flex>
-            <a ng-click="toggleNav()" style="margin-left:auto"><i class="fa fa-bars hamburger"></i></a>
+           <!-- <a ng-click="toggleNav()" style="margin-left:auto"><i class="fa fa-bars hamburger"></i></a> -->
+        <a href="/" class="nav-btn">HOME</a>
+        <a href="gifs" class="nav-btn">GIFS</a>
+        <a href="photos" class="nav-btn">PHOTOS</a>
         </div>
         <div ng-view></div>
   </md-content>
